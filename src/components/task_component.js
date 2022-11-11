@@ -98,14 +98,14 @@ export class TaskList extends React.Component {
         let theme_mode = localStorage.getItem("theme_mode")
         
         return (
-            <div className={"task_data_section " + theme_mode}>
+            <article className={"task_data_section " + theme_mode}>
                 <form onSubmit={this.dealWithInput}>
                     <input name="new_task_name" className={theme_mode} value={this.state.taskNameInput} onChange={this.taskNameChange} placeholder="Create a new todo..." />
                 </form>
-                <div className={"task_list " + theme_mode}>
+                <section className={"task_list " + theme_mode}>
                     {this.state.tasksList}
-                </div> 
-            </div>
+                </section> 
+            </article>
         )
     }
 
@@ -142,15 +142,15 @@ export class Task extends React.Component {
     render() {
         let theme_mode = localStorage.getItem("theme_mode")
         return this.state.delete === true ? "": (
-            <div className={"task " + theme_mode} id={this.state.taskID} data-completed={this.state.completed} draggable="true" onDrag={this.props.dragStart} onDrop={this.props.onDrop} onDragOver={this.props.dragOver} onDragLeave={this.props.dragLeave}>
-                <div className={"task_content_container " + theme_mode}>
+            <article className={"task " + theme_mode} id={this.state.taskID} data-completed={this.state.completed} draggable="true" onDrag={this.props.dragStart} onDrop={this.props.onDrop} onDragOver={this.props.dragOver} onDragLeave={this.props.dragLeave}>
+                <section className={"task_content_container " + theme_mode}>
                     <button className={"toggle_task_completed " + theme_mode} onClick={this.toggleCompleted}></button>
                     <span className={"task_name " + theme_mode} onClick={this.toggleCompleted}>{this.props.taskName}</span>
-                </div>
-                <div className={"delete_task_container " + theme_mode}>
+                </section>
+                <section className={"delete_task_container " + theme_mode}>
                     <img src="./images/icon-cross.svg" alt="Delete Task" className={"delete_task_image " + theme_mode} onClick={this.removeTask} />
-                </div>
-            </div>
+                </section>
+            </article>
         )
     }
 }
